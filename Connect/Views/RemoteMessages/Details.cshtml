@@ -1,0 +1,115 @@
+﻿@model Server.RemoteMessage
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>RemoteMessage</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TransactionID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TransactionID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Operation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Operacao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeviceID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeviceID)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NOP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NOP)
+        </dd>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Valor
+                    </th>
+                    <th>
+                        Quantidade
+                    </th>
+                    <th>
+                        Subtotal
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Details.Countings.Counted)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.Denom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.SubTotal)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Details.Total)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Details.Countings.QtdCedulas)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Details.Total)
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar para Lista</a>
+</div>

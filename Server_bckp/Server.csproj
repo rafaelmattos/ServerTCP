@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.25" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.25" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.25" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Migrations\20220609140913_MasterDB.Designer.cs">
+      <DependentUpon>20220609140913_MasterDB.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220610060357_altercacoes-ticket2.Designer.cs">
+      <DependentUpon>20220610060357_altercacoes-ticket2.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220610060617_altercacoes-ticket3-incluindo-id.Designer.cs">
+      <DependentUpon>20220610060617_altercacoes-ticket3-incluindo-id.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220610061718_altercacoes-ticket4-alterando-id.Designer.cs">
+      <DependentUpon>20220610061718_altercacoes-ticket4-alterando-id.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220610061830_altercacoes-ticket5-alterando-id.Designer.cs">
+      <DependentUpon>20220610061830_altercacoes-ticket5-alterando-id.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220610072345_altercacoes-ticket6-nullables.Designer.cs">
+      <DependentUpon>20220610072345_altercacoes-ticket6-nullables.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220620122008_Cliente-Equipamento-user-string.Designer.cs">
+      <DependentUpon>20220620122008_Cliente-Equipamento-user-string.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220621192208_transactionid-null.Designer.cs">
+      <DependentUpon>20220621192208_transactionid-null.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220627025853_saldo-equipamento.Designer.cs">
+      <DependentUpon>20220627025853_saldo-equipamento.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220627034935_clienteid-equipamento.Designer.cs">
+      <DependentUpon>20220627034935_clienteid-equipamento.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220627035928_cl-equi.Designer.cs">
+      <DependentUpon>20220627035928_cl-equi.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220627040344_cli-equ2.Designer.cs">
+      <DependentUpon>20220627040344_cli-equ2.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220627040511_cli-equi3.Designer.cs">
+      <DependentUpon>20220627040511_cli-equi3.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220627042815_cli-equi.Designer.cs">
+      <DependentUpon>20220627042815_cli-equi.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220721120916_mudanca-banco.Designer.cs">
+      <DependentUpon>20220721120916_mudanca-banco.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Migrations\20220808175221_xml-log.Designer.cs">
+      <DependentUpon>20220808175221_xml-log.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="configmastercoin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

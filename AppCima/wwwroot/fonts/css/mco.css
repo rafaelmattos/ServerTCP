@@ -1,0 +1,284 @@
+﻿.form-control[disabled], fieldset[disabled] .form-control {
+    background-color: #fff;
+    cursor: auto;
+}
+
+.textImageContainerBig {
+    position: relative;
+    text-align: center;
+    color: #3c8dbc;
+    font-size: 50px;
+}
+
+.textImageContainerSmall {
+    position: relative;
+    text-align: center;
+    color: #3c8dbc;
+    font-size: 10px;
+}
+
+.textImageCentered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-circle {
+    height: 100px;
+    width: 100px;
+}
+
+.imageContainer {
+    width: 35px;
+    height: 35px;
+    background-image: url('/Content/css/img/user2-160x160.jpg');
+    border-radius: 50%;
+    color: #3c8dbc;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-size: 35px 35px;
+    font-weight: bold;
+}
+
+.navbar-nav > li > a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.navbar-custom-menu .navbar-nav > li > a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.nav > li > a {
+    padding: 7px 7px;
+}
+
+th, td {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.vld-overlay.is-full-page {
+    z-index: 1051 !important;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.nav > li > a {
+    padding: 7px 14px;
+}
+
+.sweet-overlay {
+    z-index: 5000;
+}
+
+.sweet-alert {
+    z-index: 5001;
+}
+
+.input-group {
+    z-index: 0;
+}
+
+.dataTables_scroll {
+    overflow: auto;
+    width: 100%;
+}
+
+.multiselect__spinner {
+    height: 32px;
+}
+
+.multiselect__select {
+    height: 32px;
+}
+
+.multiselect--disabled {
+    opacity: 1;
+}
+
+.multiselect--disabled .multiselect__select {
+    background: #ffffff;
+}
+
+.multiselect__single {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block!important;
+}
+
+.swal2-popup {
+    font-size: 1.6rem !important;
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #ECF0F5;
+}
+
+.main-sidebar {
+    background-color: #1a2226 !important;
+}
+
+.panel {
+    background-color: #ddd;
+    border-color: darkgrey;
+}
+
+.callout.callout-info {
+    background-color: #3c8dbc !important;
+    border-color: #337ab7;
+}
+
+.btn-app {
+    background: #fff;
+}
+
+    .btn-app:hover {
+        background: #fcfcfc;
+    }
+
+pre {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+[v-cloak] {
+    display: none;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    height: 155px;
+}
+
+.loading {
+    background-color: #ffffff;
+    background-image: url("/Content/images/spinner.gif");
+    background-size: 25px 25px;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.multiselect__input {
+    padding: 0px 0px 0px 0px;
+}
+
+@media only screen and (max-width: 500px) {
+    .btn-group {
+        display: block;
+    }
+
+        .btn-group .btn {
+            display: block;
+            float: none;
+            width: 100%;
+        }
+
+    .dataTables_length {
+        display: none;
+    }
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.noPrazo {
+    background-color: #29b32e;
+}
+
+.dot.atencao {
+    background-color: #ffe814;
+}
+
+.dot.atrasado {
+    background-color: #f55a42;
+}
+
+.dot.atendidoNoPrazo {
+    background-color: transparent;
+}
+
+.dot.atendidoAtrasado {
+    background-color: transparent;
+}
+
+.dot.cancelado {
+    background-color: transparent;
+}
+
+.text-divider {
+    margin: 1em 0 1.5em 0 !important;
+    line-height: 0;
+    text-align: left;
+}
+
+.text-divider span {
+    background-color: #fff;
+    padding: 15px;
+}
+
+.text-divider:before {
+    content: " ";
+    display: block;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 0px solid;
+}
+
+/*table.dataTable thead {
+    background-color: #f5f5f5;
+}*/
+
+.multiselect__option--group {
+    font-weight: bold;
+}
+
+.modal {
+    overflow-y: auto;
+}
+
+@font-face {
+    font-family: dexy;
+    src: url('/Content/fonts/Dexy.ttf');
+}

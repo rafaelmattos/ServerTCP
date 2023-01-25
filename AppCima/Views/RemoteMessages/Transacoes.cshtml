@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Server.RemoteMessage>
+
+@{
+    ViewData["Title"] = "Transacoes";
+}
+
+<h1>Transações</h1>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    var equipamento = ViewBag.Equipamento;
+}
+
+<h1>
+    Saldo: @(((decimal)equipamento.Saldo).ToString("C2"))
+
+</h1>
+
+
+
+<form asp-controller="RemoteMessages" asp-action="Transacoes" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Entre os dias: <input type="date"  name="dataInicial" value="@ViewData["DataInicial"]" />
+            e <input type="date"  name="dataFinal" value="@ViewData["DataFinal"]"/>
+            <input type="submit" value="Pesquisar" class="btn btn-default" /> |
+            <a asp-controller="RemoteMessages" asp-action="Transacoes">Voltar para Lista Completa</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionID)
+
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Operation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Details.Currency)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Details.Countings.QtdCedulas)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Details.Total)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Operacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceID)
+            </td>
+
+
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Details.Currency)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Details.Countings.QtdCedulas)
+            </td>
+
+
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Details.Total)
+            </td>
+
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

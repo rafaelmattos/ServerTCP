@@ -1,0 +1,7 @@
+{
+  "ConnectionStringLocal": "Data Source=evo.mastercoin.com.br;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=Bzq3WGmZMA1h;MultipleActiveResultSets=true;",
+  "ConnectionStringServer": "Data Source=.\\SQLEXPRESS;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=Bzq3WGmZMA1h;MultipleActiveResultSets=true;",
+  //"ip": "172.24.42.2", //"10.2.4.1"
+  "ip": "10.2.4.1"
+
+}

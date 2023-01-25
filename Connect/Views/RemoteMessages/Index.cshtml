@@ -1,0 +1,191 @@
+﻿@model IEnumerable<Server.RemoteMessage>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAlternateID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserOrganization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionRef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsKit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Conciliation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnvelopeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SealID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MachineId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExecutedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChannelID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChannelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAlternateID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserOrganization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsKit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conciliation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnvelopeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SealID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExecutedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChannelID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChannelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

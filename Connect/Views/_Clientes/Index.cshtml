@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Server.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Clientes</h1>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <a asp-action="Create">
+                <button type="button" data-toggle="modal" class="btn btn-primary">
+                    Novo Cliente
+                </button>
+            </a>
+        </div>
+    </div>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    <div class="form-group">
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                            <button class="btn btn-primary btn-sm fa fa-pencil editar"></button>
+                        </a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            <button class="btn btn-danger btn-sm fa fa-minus-circle excluir"></button>
+                        </a>
+
+
+                    </div>
+
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
