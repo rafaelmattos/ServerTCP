@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Logging;
 using Server;
 using Server.Models;
 
@@ -18,12 +19,14 @@ namespace Connect.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<AppUser> userManager;
         private readonly MasterContext _context;
+        private readonly ILogger<AdminController> logger;
 
-        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, ILogger<AdminController> logger)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
             _context = new MasterContext();
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -227,6 +230,54 @@ namespace Connect.Controllers
             return RedirectToAction("EditRole", new { Id = roleId });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Perfil com Id = {id} nao foi encontrado.";
+                return View("NotFound");
+            }
+            else
+            {
+                // Wrap the code in a try/catch block
+                try
+                {
+                    //throw new Exception("Test Exception");
+
+                    var result = await roleManager.DeleteAsync(role);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("ListRoles");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+
+                    return View("ListRoles");
+                }
+                // If the exception is DbUpdateException, we know we are not able to
+                // delete the role as there are users in the role being deleted
+                catch (DbUpdateException ex)
+                {
+                    //Log the exception to a file. We discussed logging to a file
+                    // using Nlog in Part 63 of ASP.NET Core tutorial
+                    logger.LogError($"Exception Occured : {ex}");
+                    // Pass the ErrorTitle and ErrorMessage that you want to show to
+                    // the user using ViewBag. The Error view retrieves this data
+                    // from the ViewBag and displays to the user.
+                    ViewBag.ErrorTitle = $"{role.Name} role is in use";
+                    ViewBag.ErrorMessage = $"{role.Name} role cannot be deleted as there are users in this role. If you want to delete this role, please remove the users from the role and then try to delete";
+                    return View("Error");
+                }
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> EditClientesInUser(string UserId)
         {
@@ -422,6 +473,8 @@ namespace Connect.Controllers
                 return View(model);
             }
         }
+
+
 
         [HttpGet]
         [AllowAnonymous]

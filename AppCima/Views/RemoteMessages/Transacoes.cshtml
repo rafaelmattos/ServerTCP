@@ -18,13 +18,11 @@
 
 </h1>
 
-
-
 <form asp-controller="RemoteMessages" asp-action="Transacoes" method="get">
     <div class="form-actions no-color">
         <p>
-            Entre os dias: <input type="date"  name="dataInicial" value="@ViewData["DataInicial"]" />
-            e <input type="date"  name="dataFinal" value="@ViewData["DataFinal"]"/>
+            Entre os dias: <input type="date" name="dataInicial" value="@ViewData["DataInicial"]" />
+            e <input type="date" name="dataFinal" value="@ViewData["DataFinal"]" />
             <input type="submit" value="Pesquisar" class="btn btn-default" /> |
             <a asp-controller="RemoteMessages" asp-action="Transacoes">Voltar para Lista Completa</a>
         </p>
@@ -83,53 +81,96 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionID)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionID)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.User)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Operacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceID)
-            </td>
-
-
-            <td align="right">
-                @Html.DisplayFor(modelItem => item.Details.Currency)
-            </td>
-
-            <td align="right">
-                @Html.DisplayFor(modelItem => item.Details.Countings.QtdCedulas)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceID)
+                </td>
 
 
-            <td align="right">
-                @Html.DisplayFor(modelItem => item.Details.Total)
-            </td>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.Details.Currency)
+                </td>
 
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.Details.Countings.QtdCedulas)
+                </td>
+
+
+                <td align="right">
+                    @Html.DisplayFor(modelItem => item.Details.Total)
+                </td>
+
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+<canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext("2d");
+var transactions = @Html.Raw(Json.Serialize(Model));
+var depositos = [];
+var retiradas = [];
+for (var i = 0; i < transactions.length; i++) {
+    if (transactions[i].Operation === "Deposit") {
+        depositos.push(transactions[i].Details.Total);
+    } else if (transactions[i].Operation === "Cash removal") {
+        retiradas.push(transactions[i].Details.Total);
+    }
+}
+var myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: ["Depósitos", "Retiradas"],
+        datasets: [{
+            label: "Valor",
+            data: [depositos.reduce((a, b) => a + b, 0), retiradas.reduce((a, b) => a + b, 0)],
+            backgroundColor: [
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 99, 132, 0.2)"
+            ],
+            borderColor: [
+                "rgba(54, 162, 235, 1)",
+                "rgba(255,99,132,1)"
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>

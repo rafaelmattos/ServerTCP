@@ -1,0 +1,13 @@
+﻿@if (ViewBag.ErrorTitle == null)
+{
+    <h3>
+        Ocorreu um erro ao processar sua solicitação. .
+        A equipe de suporte deve ser notificada e estaremos trabalhando na correção
+    </h3>
+    <h5>Por favor entre em contato: suporte@connect.com</h5>
+}
+else
+{
+    <h1 class="text-danger">@ViewBag.ErrorTitle</h1>
+    <h6 class="text-danger">@ViewBag.ErrorMessage</h6>
+}

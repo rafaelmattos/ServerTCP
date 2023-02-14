@@ -29,10 +29,19 @@ namespace Server
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
             modelBuilder.Entity<TransacoesViewModel>().HasNoKey();
 
             modelBuilder.Entity<UserCliente>()
                 .HasKey(uc => new { uc.UserId, uc.ClienteId });
+
+            
         }
 
 

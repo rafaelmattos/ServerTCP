@@ -2,27 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Server;
+using Server.Models;
 
 namespace Connect.Controllers
 {
     public class ClientesController : Controller
     {
         private readonly MasterContext _context;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ClientesController(MasterContext context)
+        public ClientesController(MasterContext context, UserManager<AppUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            var masterContext = _context.Clientes.Include(c => c.ClientePai);
-            return View(await masterContext.ToListAsync());
+            var usuario = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+
+            var uc = _context.Users.Include(uc =>uc.UserClientes).ThenInclude(c =>c.Cliente).Where(cl =>cl.Id == usuario.Id);
+
+            var Clientes = new List<Cliente>();
+            foreach(var item in uc)
+            {
+               foreach (var cliente in item.UserClientes)
+                {
+                    Clientes.Add(cliente.Cliente);
+                }
+               
+            }
+                        
+            
+            
+            return View(Clientes.ToList());
         }
 
         // GET: Clientes/Details/5
