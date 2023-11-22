@@ -35,8 +35,8 @@ namespace ConsoleApplication1
 
             //optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["masterlocal"].ConnectionString);
 
-            optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=Bzq3WGmZMA1h;");
-            //optionsBuilder.UseSqlServer(@"Data Source=evo.mastercoin.com.br;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=Bzq3WGmZMA1h;");
+            optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=SENHABD;");
+            //optionsBuilder.UseSqlServer(@"Data Source=evo.mastercoin.com.br;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=SENHBD;");
 
         }
 
