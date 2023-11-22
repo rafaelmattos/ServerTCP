@@ -1,6 +1,6 @@
 {
-  "ConnectionStringLocal": "Data Source=evo.mastercoin.com.br;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=Bzq3WGmZMA1h;",
-  "ConnectionStringServer": "Data Source=.\\SQLEXPRESS;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=Bzq3WGmZMA1h;",
+  "ConnectionStringLocal": "Data Source=evo.mastercoin.com.br;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=SenhaDB;",
+  "ConnectionStringServer": "Data Source=.\\SQLEXPRESS;Initial Catalog=McConnect;Persist Security Info=True;User Id=connect;Password=SenhaDB;",
   "ip": "172.24.42.6" //"10.2.4.1"
 
 }
